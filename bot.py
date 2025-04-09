@@ -8,7 +8,7 @@ import json
 import requests
 
 # Telegram Bot Token
-BOT_TOKEN = "7396724622:AAG37MXOz0nsaRg4mxpsGciG3pEgCrj676w"
+BOT_TOKEN = "7396724622:AAE8uo61UlXybp__AWZO6KSSq7GSBWbXEJc"
 
 # Configurações da API Secullum
 AUTH_URL = "https://autenticador.secullum.com.br/token"
