@@ -208,7 +208,7 @@ async def tratar_localizacao_para_ponto(update: Update, context: ContextTypes.DE
 
 
 # Rodar o bot
-app = ApplicationBuilder().token(BOT_TOKEN).build()
+app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("funcionarios", funcionarios))
 app.add_handler(CommandHandler("listarbancos", listarbancos))
