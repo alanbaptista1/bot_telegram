@@ -6,9 +6,10 @@ from telegram import KeyboardButton, ReplyKeyboardMarkup
 from datetime import datetime
 import json
 import requests
+import os
 
 # Telegram Bot Token
-BOT_TOKEN = "7396724622:AAE8uo61UlXybp__AWZO6KSSq7GSBWbXEJc"
+TOKEN = os.environ.get("TELEGRAM_TOKEN")
 
 # Configurações da API Secullum
 AUTH_URL = "https://autenticador.secullum.com.br/token"
