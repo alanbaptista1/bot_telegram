@@ -7,6 +7,10 @@ from datetime import datetime
 import json
 import requests
 import os
+import pytz
+
+#Definindo Fuso horario Brasil
+fuso_brasil = pytz.timezone('America/Sao_Paulo')
 
 # Telegram Bot Token
 TOKEN = os.environ.get("TELEGRAM_TOKEN")
@@ -60,28 +64,6 @@ def buscar_funcionarios_visiveis(token, banco_id):
     else:
         return None
     
-"""# Autorizar a localização
-async def enviarlocalizacao(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    botao = KeyboardButton(text="📍 Enviar minha localização", request_location=True)
-    teclado = ReplyKeyboardMarkup([[botao]], resize_keyboard=True, one_time_keyboard=True)
-
-    await update.message.reply_text(
-        "Clique no botão abaixo para enviar sua localização:",
-        reply_markup=teclado
-    )"""
-    
-""" # Comando /enviarlocalizacao
-from telegram.ext import MessageHandler, filters
-
-async def tratar_localizacao(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    local = update.message.location
-    if local:
-        latitude = local.latitude
-        longitude = local.longitude
-        await update.message.reply_text(f"📌 Sua localização:\nLatitude: {latitude}\nLongitude: {longitude}")
-    else:
-        await update.message.reply_text("❌ Não consegui pegar a localização.") """
-
 
 # Comando /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -160,7 +142,6 @@ async def incluirponto(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=teclado
     )
 # Mensagem sobre incluir ponto
-
 async def tratar_localizacao_para_ponto(update: Update, context: ContextTypes.DEFAULT_TYPE):
     local = update.message.location
     print("🛰️ Função de localização iniciada")
@@ -170,7 +151,7 @@ async def tratar_localizacao_para_ponto(update: Update, context: ContextTypes.DE
 
     latitude = local.latitude
     longitude = local.longitude
-    data_hora = datetime.now().isoformat()
+    data_hora = datetime.now(fuso_brasil).isoformat()
 
     token = obter_access_token()
     if not token:
